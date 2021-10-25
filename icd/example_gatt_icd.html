@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>example Gatt ICD</title>
+</head>
+<body>
+<div class="content">
+<h1>example Gatt ICD</h1>
+<ul>
+  <li> Generated with <a href="https://github.com/uprev-mrt/mrtutils/wiki/mrt-device" MrT BLE tool>mrt-ble</a> on 10/24/21</li>
+  <li> CRC: na</li>
+</ul>
+<hr/>
+<h2>Description: </h2>
+<p>GATT profile example</p>
+
+<!--*user-block-description-start*-->
+<!--*user-block-description-end*-->
+
+<br/>
+<hr class="section">
+<h2 class="right"> Index </h2>
+<hr>
+
+
+<a href="#service_device"> Services:</a>
+
+<ul>
+  <li><a href="#service_device"> Device</a></li>
+  <li><a href="#service_battery"> Battery</a></li>
+  <li><a href="#service_sprinkler"> Sprinkler</a></li>
+  <li><a href="#service_fota"> FOTA</a></li>
+</ul>
+
+
+
+
+
+<hr class="section">
+
+<h2 class="right"> services</h2>
+<hr class="thick">
+
+
+<div id="service_device" class="service">
+<h3>Device </h3>
+<hr/>
+<ul>
+  <li class="note">  SIG descriptor: <b><a href="https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/Gatt/Xml/Services/org.bluetooth.service.device_information.xml">[org.bluetooth.service.device_information]</a></b></li>
+  <li class="note">  service UUID: <b>[180A]</b></li>
+</ul>
+
+<p class="desc">The Device Information Service exposes manufacturer and/or vendor information about a device.</p>
+
+<!--*user-block-device-start*-->
+
+<!--*user-block-device-end*-->
+<br/>
+<br/>
+<table class="chars">
+  <tr>
+    <th> Characteristic</th>
+    <th> UUID</th>
+    <th> Type</th>
+    <th> Permission</th>
+    <th> Description</th>
+  </tr>
+  <tr>
+    <td width="">
+        <b>Manufacturer_Name</b><br/>
+        <a  class="small-note" href="https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/Gatt/Xml/Characteristics/org.bluetooth.characteristic.manufacturer_name_string.xml">[SIG Standard]</a>
+    </td>
+    <td width="">2A29 </td>
+    <td width="">string</td>
+    <td width="">R </td>
+    <td>The value of this characteristic is a UTF-8 string representing the name of the manufacturer of the device.    </td>
+  </tr>
+  <tr>
+    <td width="">
+        <b>Serial_Number</b><br/>
+        <a  class="small-note" href="https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/Gatt/Xml/Characteristics/org.bluetooth.characteristic.serial_number_string.xml">[SIG Standard]</a>
+    </td>
+    <td width="">2A25 </td>
+    <td width="">string</td>
+    <td width="">R </td>
+    <td>The value of this characteristic is a variable-length UTF-8 string representing the serial number for a particular instance of the device.    </td>
+  </tr>
+  <tr>
+    <td width="">
+        <b>Hardware_Revision</b><br/>
+        <a  class="small-note" href="https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/Gatt/Xml/Characteristics/org.bluetooth.characteristic.hardware_revision_string.xml">[SIG Standard]</a>
+    </td>
+    <td width="">2A27 </td>
+    <td width="">string</td>
+    <td width="">R </td>
+    <td>The value of this characteristic is a UTF-8 string representing the hardware revision for the hardware within the device.    </td>
+  </tr>
+  <tr>
+    <td width="">
+        <b>Firmware_Revision</b><br/>
+        <a  class="small-note" href="https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/Gatt/Xml/Characteristics/org.bluetooth.characteristic.firmware_revision_string.xml">[SIG Standard]</a>
+    </td>
+    <td width="">2A26 </td>
+    <td width="">string</td>
+    <td width="">R </td>
+    <td>Firmware revision    </td>
+  </tr>
+</table>
+
+<br/>
+<hr class="thick">
+</div>
+<div id="service_battery" class="service">
+<h3>Battery </h3>
+<hr/>
+<ul>
+  <li class="note">  SIG descriptor: <b><a href="https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/Gatt/Xml/Services/org.bluetooth.service.battery_service.xml">[org.bluetooth.service.battery_service]</a></b></li>
+  <li class="note">  service UUID: <b>[180F]</b></li>
+</ul>
+
+<p class="desc">The Battery Service exposes the state of a battery within a device.</p>
+
+<!--*user-block-battery-start*-->
+
+<!--*user-block-battery-end*-->
+<br/>
+<br/>
+<table class="chars">
+  <tr>
+    <th> Characteristic</th>
+    <th> UUID</th>
+    <th> Type</th>
+    <th> Permission</th>
+    <th> Description</th>
+  </tr>
+  <tr>
+    <td width="">
+        <b>Level</b><br/>
+        <a  class="small-note" href="https://www.bluetooth.com/wp-content/uploads/Sitecore-Media-Library/Gatt/Xml/Characteristics/org.bluetooth.characteristic.battery_level.xml">[SIG Standard]</a>
+    </td>
+    <td width="">2A19 </td>
+    <td width="">uint8</td>
+    <td width="">RNI </td>
+    <td>The current charge level of a battery. 100% represents fully charged while 0% represents fully discharged.    </td>
+  </tr>
+</table>
+
+<br/>
+<hr class="thick">
+</div>
+<div id="service_sprinkler" class="service">
+<h3>Sprinkler </h3>
+<hr/>
+<ul>
+  <li class="note">  service UUID: <b>[71a8-1b49-ce39-0088-6b62-c8ed-9e20-9a5b]</b></li>
+</ul>
+
+<p class="desc">Custom service for a sprinkler system</p>
+
+<!--*user-block-sprinkler-start*-->
+
+<!--*user-block-sprinkler-end*-->
+<br/>
+<br/>
+<table class="chars">
+  <tr>
+    <th> Characteristic</th>
+    <th> UUID</th>
+    <th> Type</th>
+    <th> Permission</th>
+    <th> Description</th>
+  </tr>
+  <tr>
+    <td width=""><b>Thresh</b></td>
+    <td width="">1B4A </td>
+    <td width="">uint16</td>
+    <td width="">RW </td>
+    <td>Moisture Threshold to turn on the sprinklers    </td>
+  </tr>
+  <tr>
+    <td width=""><b>Temperature</b></td>
+    <td width="">1B4B </td>
+    <td width="">uint16</td>
+    <td width="">RN </td>
+    <td>Temperature reading from sensor    </td>
+  </tr>
+  <tr>
+    <td width=""><b>Moisture</b></td>
+    <td width="">1B4C </td>
+    <td width="">uint16[6]</td>
+    <td width="">R </td>
+    <td>Moisture readings from all 6 zones    </td>
+  </tr>
+  <tr>
+    <td width=""><b>Relays</b></td>
+    <td width="">1B4D </td>
+    <td width="">uint8</td>
+    <td width="">RWN </td>
+    <td>Controls Relays for pump and valves      <br/>
+      <ul>
+      <li class="val">0x01 : <b>pump</b> - pump control</li>
+      <li class="val">0x02 : <b>valve01</b> - valve 1 control</li>
+      <li class="val">0x04 : <b>valve02</b> - valve 2 control</li>
+      <li class="val">0x08 : <b>valve03</b> - valve 3 control</li>
+      <li class="val">0x10 : <b>valve04</b> - valve 4 control</li>
+      <li class="val">0x20 : <b>valve05</b> - valve 5 control</li>
+      <li class="val">0x40 : <b>valve06</b> - valve 6 control</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td width=""><b>SoilType</b></td>
+    <td width="">1B4E </td>
+    <td width="">uint8</td>
+    <td width="">RW </td>
+    <td>Soil type for the yard      <br/>
+      <ul>
+      <li class="val">0x00 : <b>Peat</b> - Peat soil</li>
+      <li class="val">0x01 : <b>Sand</b> - Peat soil</li>
+      <li class="val">0x02 : <b>Clay</b> - Peat soil</li>
+      <li class="val">0x03 : <b>TopSoil</b> - TopSoil</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<br/>
+<hr class="thick">
+</div>
+<div id="service_fota" class="service">
+<h3>FOTA </h3>
+<hr/>
+<ul>
+  <li class="note">  service UUID: <b>[71a8-1b49-ce39-0088-6b62-c8ed-9A10-9a5b]</b></li>
+</ul>
+
+<p class="desc">sercive for performing over the air updates</p>
+
+<!--*user-block-fota-start*-->
+
+<!--*user-block-fota-end*-->
+<br/>
+<br/>
+<table class="chars">
+  <tr>
+    <th> Characteristic</th>
+    <th> UUID</th>
+    <th> Type</th>
+    <th> Permission</th>
+    <th> Description</th>
+  </tr>
+  <tr>
+    <td width=""><b>version</b></td>
+    <td width="">1B4A </td>
+    <td width="">string</td>
+    <td width="">RW </td>
+    <td>current Firmware version    </td>
+  </tr>
+  <tr>
+    <td width=""><b>newVerion</b></td>
+    <td width="">1B4B </td>
+    <td width="">string</td>
+    <td width="">RW </td>
+    <td>version of new firmware being loaded    </td>
+  </tr>
+  <tr>
+    <td width=""><b>data</b></td>
+    <td width="">1B4C </td>
+    <td width="">uint8[64]</td>
+    <td width="">RW </td>
+    <td>current block of data    </td>
+  </tr>
+  <tr>
+    <td width=""><b>seq</b></td>
+    <td width="">1B4D </td>
+    <td width="">uint32</td>
+    <td width="">RW </td>
+    <td>sequence number of current block    </td>
+  </tr>
+  <tr>
+    <td width=""><b>crc</b></td>
+    <td width="">1B4E </td>
+    <td width="">uint32</td>
+    <td width="">RW </td>
+    <td>crc of new firmware    </td>
+  </tr>
+  <tr>
+    <td width=""><b>status</b></td>
+    <td width="">1B4F </td>
+    <td width="">uint8</td>
+    <td width="">RW </td>
+    <td>status of OTA process      <br/>
+      <ul>
+      <li class="val">0x00 : <b>IDLE</b> - no ota operation taking place</li>
+      <li class="val">0x01 : <b>DOWNLOAD</b> - Currently downloading new firmware</li>
+      <li class="val">0x02 : <b>COMPLETE</b> - Firmware download complete. ready to update</li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<br/>
+<hr class="thick">
+</div>
+
+</div>
+</body>
+<style>
+table.fixed { table-layout:auto; }
+table.fixed td { overflow:visible; }
+
+table.chars{
+  table-layout:auto;
+}
+
+body {
+  padding:0;
+}
+
+.content{
+  padding-top: 0;
+  padding-left: 1%;
+  padding-right: 1%;
+  background-color: #fff;
+}
+
+@media print {
+  .service {
+    page-break-inside: avoid;
+    padding-top: 4px;
+  }
+  .content{
+    width: 100%;
+  }
+  body{
+    background-color: #fff;
+  }
+}
+
+@media screen {
+  .content{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    padding-top: 4px;
+    box-shadow: 5px 10px #AAA;
+  }
+
+  body{
+    background-color: #ccc;
+    padding: 0;
+  }
+}
+
+html *{
+  font-size: 1em ;
+   color: #000 ;
+  font-family: Arial ;
+}
+
+hr.section {
+  border-style: solid;
+  border-width: 2px;
+  opacity: 1;
+}
+
+
+hr.thick {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #94b2d3;
+  opacity: 1;
+}
+
+hr {
+  opacity: 0.5;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+  vertical-align: top;
+}
+
+.desc{
+  font-size: 1.2em;
+}
+
+th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+  background-color: #94b2d3;
+}
+
+li.val{
+  opacity: 0.6;
+}
+
+h1{
+  font-size: 2.5em;
+}
+
+h2 
+{
+  font-size: 1.8em;
+}
+
+h2.right{
+  text-align: center;
+  font-size: 1.8em;
+}
+
+h3
+{
+  font-size: 1.8em;
+  color: #003366;
+}
+
+h4 
+{
+  font-size: 1.1em;
+  color: #003366;
+}
+
+
+.note{
+  font-style: italic;
+  opacity: 0.6;
+}
+
+.small-note{
+  font-style: italic;
+  opacity: 0.6;
+  font-size: 0.8em;
+}
+
+a{
+  text-decoration:none;
+}
+
+a:link {
+  color: blue;
+}
+
+/* visited link */
+a:visited {
+  color: blue;
+}
+
+table.fixed tr td:last-child{
+    width:1%;
+    white-space:nowrap;
+}
+</style>
+</html>
