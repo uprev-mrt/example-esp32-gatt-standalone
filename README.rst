@@ -3,7 +3,7 @@ ESP32 Gatt Standalone
 
 This is an example project demonstrating the use the the ``mrt-ble`` tool to create a gatt server on the ESP32 platform. ``Standalone`` refers to the fact that the project does not actually use the ``MrT`` framework. The ``mrt-ble`` utility just pulls the necessary adapter files into the project. 
 
-The project is broken into n steps, and in the repository there is a commit for each step of the process to reference. 
+The project is broken into 4 steps, and in the repository there is a commit for each step of the process to reference. 
 
 .. note: while this can be done in any IDE you prefer, some of notes in the walkthrough assume the project is opened in VS Code.
 
@@ -36,7 +36,7 @@ Because we are providing our own gatt services and handlers, we can get rid of t
 Step 2: Specify the Gatt Profile
 --------------------------------
 
-``mrt-ble`` uses yaml files to describe gatt profiles and generate code. The easiest way to get started is to generate the sample template 
+``mrt-ble`` uses yaml files to describe gatt profiles and generate code. The easiest way to get started is to generate the example template 
 
 .. code:: bash 
 
@@ -47,7 +47,7 @@ This will generate `example_profile.yml` which contains an example profile for a
 Step 3: Generate the Code and ICD 
 ---------------------------------
 
-In a real project, you would want to modify ``example_profile.yml`` to meet the needs of your project. But to keep this example simple, we will just go ahead and build the sample protocol. 
+In a real project, you would want to modify ``example_profile.yml`` to meet the needs of your project. But to keep this example simple, we will just go ahead and build the example protocol. 
 
 Code 
 ~~~~
@@ -83,8 +83,8 @@ First we will generate the code
            ├── app_spr_svc.c
            ├── CMakeLists.txt
            ├── component.mk
-           ├── sample_gatt_server.c
-           └── sample_gatt_server.h
+           ├── example_gatt_server.c
+           └── example_gatt_server.h
 
 - **./interface/mrt_gatt_interface**    
     This is the gatt interface from the MrT GattInterface submodule. It provides a common structure for defining gatt profiles, services, and characteristics. This code is common for any device using the MrT Gatt interface. Each platform requires an 'Adapter' module to convert native structs to the MrT format
@@ -98,7 +98,7 @@ First we will generate the code
 - **./app_x_svc.c**
     For every service in the profile, there will be an application level service file named app_<service prefix>_svx.c. These files contain the handlers for the services and characteristics which can be edited to do whatever is needed with the data. 
 
-- **./sample_gatt_server**
+- **./example_gatt_server**
     This is our main piece of application code. It creates the profile, and contains event handlers which convert events from esp32 format to the MrT format and dispatches them to our handler functions.
 
 - **misc**:
@@ -117,17 +117,17 @@ ICD
 
 This will create 2 new files: 
 
-- **./icd/sample_gatt_icd.html:**
+- **./icd/example_gatt_icd.html:**
     This is a formatted ICD of the profile in html format. It is just created for documentation 
 
-.. image:: doc/images/icd_sample.png 
+.. image:: doc/images/icd_example.png 
    :class: with-shadow
 
 
-- **./icd/sample_live_icd.html:**
+- **./icd/example_live_icd.html:**
     This is the "live" ICD. It is actually a single page web app which uses the Web Bluetooth Api. If opened on a computer with BLE support, it can connect to the device and provide graphical interface for interacting with it. 
 
-.. image:: doc/images/live_icd_sample.png 
+.. image:: doc/images/live_icd_example.png 
     :width: 1000
 
 Step 4: Code Integration
@@ -155,11 +155,11 @@ Start Server
 
 To start the gatt server, we need to edit the main source file, which in this case is called ``gatts_table_create_demo.c``:
 
-`Include sample_gatt_server`: 
+`Include example_gatt_server`: 
 
 .. code:: c 
 
-    #include "gatt/sample_gatt_server.h" 
+    #include "gatt/example_gatt_server.h" 
 
 
 `Start Server` 
@@ -178,7 +178,7 @@ To start the gatt server, we need to edit the main source file, which in this ca
         }
         ESP_ERROR_CHECK( ret );
 
-        easyrider_gatts_start();    //Start the server 
+        example_gatts_start();    //Start the server 
 
         return;
     }
@@ -215,8 +215,9 @@ For this example, we will use an LED to indicate when the pump relay is on
         //Configure LED pin 
         gpio_reset_pin(GPIO_LED);
         gpio_set_direction(GPIO_LED, GPIO_MODE_OUTPUT);
-}
     }
+
+.. note:: any code in a `user-block` section, or in a function whos name ends with '_handler' will be preserved when code is regenerated.
 
 
 `Set the LED based on the value of the Pump bit in our bitmask` 
@@ -271,8 +272,8 @@ For this example, we will use an LED to indicate when the pump relay is on
 
 .. note:: Each characteristic gets a typedef for its type. For instance `spr_relays_t` is just an alias for uint8_t. This is done for future proofing. For instance if you added more values to the definitions of 'Relays' and it grew to have more than 8 bits, the type would change to a uint16_t, and would break existing code if it just used uint8_t explicitly. 
 
-Step 5: Interacting with the server 
------------------------------------
+Interacting with the server 
+---------------------------
 
 Now we can flash the device with our code, and interact with the server. 
 
@@ -286,6 +287,8 @@ Now we can flash the device with our code, and interact with the server.
 While the device is running, open `icd/example_live_icd.html <icd/example_live_icd.html>`_ in your browser. Click connect to device, and look for a device named ``EXAMPLE_DEVICE``. Once connected, the services on the page should turn green to indicate they have been discovered. 
 
 Under Sprinkler->Relays, toggle the switch for 'pump', and then click `Write` to push the data to the device. The indicator next to the switch should light up to show it has been set, and the LED on the board should light up as well.
+
+.. image:: doc/images/relays.png
 
 
 

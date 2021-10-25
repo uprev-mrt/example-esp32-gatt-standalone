@@ -7,6 +7,9 @@
 
 /*user-block-includes-start -------------------------------------------------*/
 #include "svc/spr_svc.h"
+#include "driver/gpio.h"
+
+#define GPIO_LED 2
 
 /*user-block-includes-end*/
 
@@ -18,7 +21,9 @@
  */
 void spr_svc_post_init_handler(void)
 {
-    //TODO initialize characteristic values 
+    //Configure LED pin
+    gpio_reset_pin(GPIO_LED);
+    gpio_set_direction(GPIO_LED, GPIO_MODE_OUTPUT);
 }
 
 /* Characteristic Event Handlers----------------------------------------------*/
@@ -73,7 +78,10 @@ mrt_status_t spr_moisture_handler(mrt_gatt_evt_t* event)
 mrt_status_t spr_relays_handler(mrt_gatt_evt_t* event)
 {
 
-    //spr_relays_t val = *((spr_relays_t*) event->data.value); /* Cast to correct data type*/
+    spr_relays_t val = *((spr_relays_t*) event->data.value); /* Cast to correct data type*/
+
+    //Set LED output based on bit for pump relay
+    gpio_set_level(GPIO_LED, val & SPR_RELAYS_PUMP);
 
 
     //if(val & SPR_RELAYS_PUMP)                               /* pump control */

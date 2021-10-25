@@ -31,6 +31,8 @@
 #include "gatts_table_creat_demo.h"
 #include "esp_gatt_common_api.h"
 
+#include "gatt/example_gatt_server.h"
+
 
 void app_main(void)
 {
@@ -43,6 +45,8 @@ void app_main(void)
         ret = nvs_flash_init();
     }
     ESP_ERROR_CHECK( ret );
+
+    example_gatts_start();    //Start the server
 
    
 }
