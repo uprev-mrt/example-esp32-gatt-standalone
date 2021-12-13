@@ -14,6 +14,7 @@
 /*user-block-includes-end*/
 
 
+
 /* Post Init -----------------------------------------------------------------*/
 
 /**
@@ -21,7 +22,7 @@
  */
 void spr_svc_post_init_handler(void)
 {
-    //Configure LED pin
+        //Configure LED pin
     gpio_reset_pin(GPIO_LED);
     gpio_set_direction(GPIO_LED, GPIO_MODE_OUTPUT);
 }

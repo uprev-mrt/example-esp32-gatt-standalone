@@ -15,7 +15,7 @@
            <div class="d-flex justify-content-between align-items-center">
 
                <ul>
-                   <li> Generated with <a href="https://github.com/uprev-mrt/mrtutils/wiki/mrt-device" MrT BLE tool>mrt-ble</a> on 10/25/21</li>
+                   <li> Generated with <a href="https://github.com/uprev-mrt/mrtutils/wiki/mrt-device" MrT BLE tool>mrt-ble</a> on 12/13/21</li>
                    <li> Services: {{profile.services.length}}</li>
                    <li> Characteristics: {{char_count}}</li>
                    <li> Attributes: {{attrib_count}}</li>
@@ -468,7 +468,7 @@ Vue.component('char-item',{
           "url": "",
           "type": "uint16",
           "unit": "\u00b0f",
-          "coef": 100,
+          "coef": 0.01,
           "icon": "",
           "uuid_type": "MRT_UUID_LEN_128",
           "perm": "RN",
@@ -742,7 +742,7 @@ Vue.component('char-item',{
                 data: {
                  profile:  profile,
                  bluetoothDevice: bluetoothDevice,
-                 showAll: false,
+                 showAll: true,
                  char_count: char_count,
                  attrib_count: attrib_count
                 },

@@ -1,7 +1,7 @@
 /**
  * @file dvc_svc.h
  * @brief The Device Information Service exposes manufacturer and/or vendor information about a device.
- * @date 10/24/21
+ * @date 12/13/21
  * 
  */
 

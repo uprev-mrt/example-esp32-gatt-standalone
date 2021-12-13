@@ -1,7 +1,7 @@
 /**
  * @file bat_svc.c
  * @brief The Battery Service exposes the state of a battery within a device.
- * @date 10/24/21
+ * @date 12/13/21
  * 
  */
 

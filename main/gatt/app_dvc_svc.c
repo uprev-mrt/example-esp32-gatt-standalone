@@ -8,7 +8,12 @@
 /*user-block-includes-start -------------------------------------------------*/
 #include "svc/dvc_svc.h"
 
+/* Private Variables ---------------------------------------------------------*/   
+    char* dvc_manufacturer_name_default = "Up-Rev";
+
+
 /*user-block-includes-end*/
+
 
 
 /* Post Init -----------------------------------------------------------------*/
@@ -18,6 +23,7 @@
  */
 void dvc_svc_post_init_handler(void)
 {
+    dvc_set_manufacturer_name(dvc_manufacturer_name_default);
     //TODO initialize characteristic values 
 }
 

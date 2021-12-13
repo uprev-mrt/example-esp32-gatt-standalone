@@ -1,7 +1,7 @@
 /**
  * @file spr_svc.h
  * @brief Custom service for a sprinkler system
- * @date 10/24/21
+ * @date 12/13/21
  * 
  */
 
@@ -65,11 +65,11 @@ void spr_svc_register();
 /* Getters and Setters--------------------------------------------------------*/
 
 /* */
-#define spr_set_thresh(val)                  mrt_gatt_update_char_val(&spr_svc.mThresh, (uint8_t*)(val), 2)
-#define spr_set_temperature(val)             mrt_gatt_update_char_val(&spr_svc.mTemperature, (uint8_t*)(val), 2)
-#define spr_set_moisture(val)                mrt_gatt_update_char_val(&spr_svc.mMoisture, (uint8_t*)(val), 12)
-#define spr_set_relays(val)                  mrt_gatt_update_char_val(&spr_svc.mRelays, (uint8_t*)(val), 1)
-#define spr_set_soiltype(val)                mrt_gatt_update_char_val(&spr_svc.mSoiltype, (uint8_t*)(val), 1)
+#define spr_set_thresh(val)                  mrt_gatt_update_char_val(&spr_svc.mThresh, (uint8_t*)(&(spr_thresh_t){val}), 2)
+#define spr_set_temperature(val)             mrt_gatt_update_char_val(&spr_svc.mTemperature, (uint8_t*)(&(spr_temperature_t){val}), 2)
+#define spr_set_moisture(val,len)            mrt_gatt_update_char_val(&spr_svc.mMoisture, (uint8_t*)(val), (len))
+#define spr_set_relays(val)                  mrt_gatt_update_char_val(&spr_svc.mRelays, (uint8_t*)(&(spr_relays_t){val}), 1)
+#define spr_set_soiltype(val)                mrt_gatt_update_char_val(&spr_svc.mSoiltype, (uint8_t*)(&(spr_soiltype_t){val}), 1)
 
 /**
  * @brief get cached data for characteristics

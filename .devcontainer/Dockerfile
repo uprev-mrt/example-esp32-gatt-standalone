@@ -83,11 +83,12 @@ RUN adduser --quiet dev && \
     echo "dev:$DEV_PW" | chpasswd && \
     chown -R dev /home/dev 
 
-RUN echo '. /opt/esp/idf/export.sh > /dev/null 2>&1 & ' >> /home/dev/.bashrc 
+RUN echo $($IDF_PATH/tools/idf_tools.py export) >> $HOME/.bashrc
+RUN echo $($IDF_PATH/tools/idf_tools.py export) >> /home/dev/.bashrc
 
 RUN export LC_ALL="en_US.UTF-8"
 RUN export LC_CTYPE="en_US.UTF-8"
 RUN dpkg-reconfigure locales
 
-ENTRYPOINT [ "/opt/esp/entrypoint.sh" ]
-
+#ENTRYPOINT [ "/opt/esp/entrypoint.sh" ]
+CMD ["/bin/bash"]

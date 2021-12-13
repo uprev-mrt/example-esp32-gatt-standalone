@@ -1,7 +1,7 @@
 /**
  * @file ota_svc.c
  * @brief sercive for performing over the air updates
- * @date 10/24/21
+ * @date 12/13/21
  * 
  */
 

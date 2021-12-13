@@ -1,7 +1,7 @@
 /**
  * @file bat_svc.h
  * @brief The Battery Service exposes the state of a battery within a device.
- * @date 10/24/21
+ * @date 12/13/21
  * 
  */
 
@@ -42,7 +42,7 @@ void bat_svc_register();
 /* Getters and Setters--------------------------------------------------------*/
 
 /* */
-#define bat_set_level(val)                   mrt_gatt_update_char_val(&bat_svc.mLevel, (uint8_t*)(val), 1)
+#define bat_set_level(val)                   mrt_gatt_update_char_val(&bat_svc.mLevel, (uint8_t*)(&(bat_level_t){val}), 1)
 
 /**
  * @brief get cached data for characteristics

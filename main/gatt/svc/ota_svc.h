@@ -1,7 +1,7 @@
 /**
  * @file ota_svc.h
  * @brief sercive for performing over the air updates
- * @date 10/24/21
+ * @date 12/13/21
  * 
  */
 
@@ -57,10 +57,10 @@ void ota_svc_register();
 /* */
 #define ota_set_version(val)                 mrt_gatt_update_char_val(&ota_svc.mVersion, (uint8_t*)(val), strlen(val))
 #define ota_set_newverion(val)               mrt_gatt_update_char_val(&ota_svc.mNewverion, (uint8_t*)(val), strlen(val))
-#define ota_set_data(val)                    mrt_gatt_update_char_val(&ota_svc.mData, (uint8_t*)(val), 64)
-#define ota_set_seq(val)                     mrt_gatt_update_char_val(&ota_svc.mSeq, (uint8_t*)(val), 4)
-#define ota_set_crc(val)                     mrt_gatt_update_char_val(&ota_svc.mCrc, (uint8_t*)(val), 4)
-#define ota_set_status(val)                  mrt_gatt_update_char_val(&ota_svc.mStatus, (uint8_t*)(val), 1)
+#define ota_set_data(val,len)                mrt_gatt_update_char_val(&ota_svc.mData, (uint8_t*)(val), (len))
+#define ota_set_seq(val)                     mrt_gatt_update_char_val(&ota_svc.mSeq, (uint8_t*)(&(ota_seq_t){val}), 4)
+#define ota_set_crc(val)                     mrt_gatt_update_char_val(&ota_svc.mCrc, (uint8_t*)(&(ota_crc_t){val}), 4)
+#define ota_set_status(val)                  mrt_gatt_update_char_val(&ota_svc.mStatus, (uint8_t*)(&(ota_status_t){val}), 1)
 
 /**
  * @brief get cached data for characteristics
